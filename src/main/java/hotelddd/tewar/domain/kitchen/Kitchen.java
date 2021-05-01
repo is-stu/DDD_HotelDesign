@@ -35,7 +35,7 @@ public class Kitchen extends AggregateEvent<KitchenId> {
         appendChange(new UpdatedKitchen(entityId,dimension)).apply();
     }
 
-    public void increaseChefExperience(KitchenId entityId,Chef chef){
+    public void increaseChefExperience(){
         appendChange(new IncreasedChefExperience(entityId, chef)).apply();
     }
 }
