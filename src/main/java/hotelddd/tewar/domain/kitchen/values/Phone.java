@@ -4,16 +4,16 @@ import co.com.sofka.domain.generic.ValueObject;
 
 import java.util.Objects;
 
-public class Phone implements ValueObject<Integer> {
+public class Phone implements ValueObject<String> {
 
-    private final Integer phone;
+    private final String phone;
 
-    public Phone(Integer phone) {
+    public Phone(String phone) {
         this.phone = Objects.requireNonNull(phone);
     }
 
     @Override
-    public Integer value() {
+    public String value() {
         return phone;
     }
 }

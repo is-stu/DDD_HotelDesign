@@ -37,6 +37,10 @@ class CreateInventoryUseCaseTest {
 
 
         assertEquals("Hamburguesa",inventoryCreated.getFood().getName().value());
+        assertEquals(5,inventoryCreated.getFood().getStock().value());
+        assertEquals("Platos Royele",inventoryCreated.getUtensil().getName().value());
+        assertEquals("Royele",inventoryCreated.getUtensil().getBrand().value());
+        assertEquals(25,inventoryCreated.getUtensil().getStock().value());
 
 
     }
