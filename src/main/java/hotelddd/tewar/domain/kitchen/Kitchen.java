@@ -4,6 +4,7 @@ import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
 import hotelddd.tewar.domain.kitchen.entities.Chef;
 import hotelddd.tewar.domain.kitchen.events.KitchenCreated;
+import hotelddd.tewar.domain.kitchen.events.UpdatedKitchen;
 import hotelddd.tewar.domain.kitchen.values.Dimension;
 import hotelddd.tewar.domain.kitchen.values.KitchenId;
 
@@ -27,5 +28,9 @@ public class Kitchen extends AggregateEvent<KitchenId> {
         var kitchen = new Kitchen(entityId);
         events.forEach(kitchen::applyEvent);
         return kitchen;
+    }
+
+    public void UpdateKitchen(KitchenId entityId, Dimension dimension){
+        appendChange(new UpdatedKitchen(entityId,dimension)).apply();
     }
 }
