@@ -37,4 +37,8 @@ public class Chef extends Entity<WorkerId> {
     public Special getSpecial() {
         return special;
     }
+
+    public void increaseExperience(){
+        this.experience = experience.increaseExperience(experience.value());
+    }
 }

@@ -12,6 +12,10 @@ public class Experience implements ValueObject<Integer> {
         this.experience = Objects.requireNonNull(experience);
     }
 
+    public Experience increaseExperience(Integer value){
+        return new Experience(experience + value);
+    }
+
     @Override
     public Integer value() {
         return experience;
