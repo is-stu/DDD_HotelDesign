@@ -5,6 +5,7 @@ import co.com.sofka.domain.generic.DomainEvent;
 import hotelddd.tewar.domain.inventory.entities.Food;
 import hotelddd.tewar.domain.inventory.entities.Utensil;
 import hotelddd.tewar.domain.inventory.events.InventoryCreated;
+import hotelddd.tewar.domain.inventory.events.UpdatedInventory;
 import hotelddd.tewar.domain.inventory.values.InventoryId;
 
 import java.util.List;
@@ -28,5 +29,10 @@ public class Inventory extends AggregateEvent<InventoryId> {
         var recurso = new Inventory(entityId);
         events.forEach(recurso::applyEvent);
         return recurso;
+    }
+
+
+    public void UpdateInventory(InventoryId entityId, Food food, Utensil utensil){
+        appendChange(new UpdatedInventory(entityId,food,utensil)).apply();
     }
 }
