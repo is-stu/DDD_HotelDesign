@@ -3,6 +3,7 @@ package hotelddd.tewar.domain.kitchen;
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
 import hotelddd.tewar.domain.kitchen.entities.Chef;
+import hotelddd.tewar.domain.kitchen.events.IncreasedChefExperience;
 import hotelddd.tewar.domain.kitchen.events.KitchenCreated;
 import hotelddd.tewar.domain.kitchen.events.UpdatedKitchen;
 import hotelddd.tewar.domain.kitchen.values.Dimension;
@@ -32,5 +33,9 @@ public class Kitchen extends AggregateEvent<KitchenId> {
 
     public void UpdateKitchen(KitchenId entityId, Dimension dimension){
         appendChange(new UpdatedKitchen(entityId,dimension)).apply();
+    }
+
+    public void increaseChefExperience(KitchenId entityId,Chef chef){
+        appendChange(new IncreasedChefExperience(entityId, chef)).apply();
     }
 }
