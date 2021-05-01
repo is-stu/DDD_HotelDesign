@@ -4,6 +4,8 @@ import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
 import hotelddd.tewar.domain.inventory.entities.Food;
 import hotelddd.tewar.domain.inventory.entities.Utensil;
+import hotelddd.tewar.domain.inventory.events.BroughtBrand;
+import hotelddd.tewar.domain.inventory.events.CheckedStock;
 import hotelddd.tewar.domain.inventory.events.InventoryCreated;
 import hotelddd.tewar.domain.inventory.events.UpdatedInventory;
 import hotelddd.tewar.domain.inventory.values.InventoryId;
@@ -34,5 +36,13 @@ public class Inventory extends AggregateEvent<InventoryId> {
 
     public void UpdateInventory(InventoryId entityId, Food food, Utensil utensil){
         appendChange(new UpdatedInventory(entityId,food,utensil)).apply();
+    }
+
+    public void checkStock(InventoryId entityId, Food food, Utensil utensil){
+        appendChange(new CheckedStock(entityId,food,utensil)).apply();
+    }
+
+    public void bringBrand(InventoryId entityId,Utensil utensil){
+        appendChange(new BroughtBrand(entityId,utensil)).apply();
     }
 }
